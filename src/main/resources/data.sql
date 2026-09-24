@@ -14,6 +14,12 @@ INSERT INTO users (id, username, email, full_name, role) VALUES
 (9, 'mguerrero', 'mguerrero@u.icesi.edu.co', 'Mateo Guerrero', 'STUDENT'),
 (10, 'srestrepo', 'srestrepo@u.icesi.edu.co', 'Sofia Restrepo', 'STUDENT');
 
+INSERT INTO classrooms (id, name, course_code, semester, teacher_id) VALUES
+                                                                         (1, 'Computacion en Internet II - Grupo 1', 'CI-2026-G1', '2026-02', 1),
+                                                                         (2, 'Computacion en Internet II - Grupo 2', 'CI-2026-G2', '2026-02', 2),
+                                                                         (3, 'Arquitectura de Software - Grupo 1', 'AS-2026-G1', '2026-02', 1),
+                                                                         (4, 'Sistemas Distribuidos', 'SD-2025-G1', '2025-02', 3);
+
 INSERT INTO assignments (id, title, description, deadline, max_score, classroom_id) VALUES
 (1, 'Taller 1: Spring Data JPA', 'Implementacion de modelos relacionales y Query Methods', '2026-03-20 23:59:59', 100, 1),
 (2, 'Parcial 1: Persistencia Avanzada', 'Examen practico de JPA con relaciones complejas', '2026-04-10 18:00:00', 100, 1),
@@ -21,11 +27,18 @@ INSERT INTO assignments (id, title, description, deadline, max_score, classroom_
 (4, 'Proyecto Final: Microservicios', 'Arquitectura modular orientada a eventos', '2026-05-30 23:59:59', 100, 3),
 (5, 'Laboratorio RPC Antiguo', 'Practicas de gRPC del semestre anterior', '2025-03-10 23:59:59', 100, 4);
 
-INSERT INTO classrooms (id, name, course_code, semester) VALUES
-(1, 'Computacion en Internet II - Grupo 1', 'CI-2026-G1', '2026-02', 1),
-(2, 'Computacion en Internet II - Grupo 2', 'CI-2026-G2', '2026-02', 2),
-(3, 'Arquitectura de Software - Grupo 1', 'AS-2026-G1', '2026-02', 1),
-(4, 'Sistemas Distribuidos', 'SD-2025-G1', '2025-02', 3);
+
+INSERT INTO repositories (id, name, is_template, is_private, created_at, assignment_id, owner_id, parent_repo_id) VALUES
+                                                                                                                      (1, 'template-jpa-exam', true, false, '2026-03-01 08:00:00', 1, 1, NULL),
+                                                                                                                      (2, 'template-rest-api', true, false, '2026-03-02 08:00:00', 3, 2, NULL),
+                                                                                                                      (3, 'template-microservices', true, false, '2026-03-05 08:00:00', 4, 1, NULL),
+                                                                                                                      (4, 'jpa-exam-cjimenez', false, true, '2026-03-10 09:30:00', 1, 6, 1),
+                                                                                                                      (5, 'jpa-exam-dcastillo', false, true, '2026-03-10 10:15:00', 1, 7, 1),
+                                                                                                                      (6, 'jpa-exam-vmendoza', false, true, '2026-03-11 11:00:00', 1, 8, 1),
+                                                                                                                      (7, 'rest-api-mguerrero', false, true, '2026-03-12 14:20:00', 3, 9, 2),
+                                                                                                                      (8, 'rest-api-srestrepo', false, true, '2026-03-13 16:45:00', 3, 10, 2),
+                                                                                                                      (9, 'microservices-cjimenez', false, true, '2026-03-15 17:00:00', 4, 6, 3),
+                                                                                                                      (10, 'standalone-notes-dcastillo', false, false, '2026-03-01 12:00:00', 1, 7, NULL);
 
 INSERT INTO pull_requests (id, title, status, pr_number, created_at, repository_id, author_id, reviewer_id) VALUES
 (1, 'Entrega Taller JPA - Camila Jimenez', 'OPEN', 1, '2026-03-18 19:30:00', 4, 6, 4),
@@ -36,17 +49,7 @@ INSERT INTO pull_requests (id, title, status, pr_number, created_at, repository_
 (6, 'Avance Microservicios - Camila Jimenez', 'OPEN', 1, '2026-03-24 16:00:00', 9, 6, 1),
 (7, 'Correcciones finales JPA - Camila Jimenez', 'MERGED', 2, '2026-03-19 21:00:00', 4, 6, 4);
 
-INSERT INTO repositories (id, name, is_template, is_private, created_at, assignment_id, owner_id, parent_repo_id) VALUES
-(1, 'template-jpa-exam', true, false, '2026-03-01 08:00:00', 1, 1, NULL),
-(2, 'template-rest-api', true, false, '2026-03-02 08:00:00', 3, 2, NULL),
-(3, 'template-microservices', true, false, '2026-03-05 08:00:00', 4, 1, NULL),
-(4, 'jpa-exam-cjimenez', false, true, '2026-03-10 09:30:00', 1, 6, 1),
-(5, 'jpa-exam-dcastillo', false, true, '2026-03-10 10:15:00', 1, 7, 1),
-(6, 'jpa-exam-vmendoza', false, true, '2026-03-11 11:00:00', 1, 8, 1),
-(7, 'rest-api-mguerrero', false, true, '2026-03-12 14:20:00', 3, 9, 2),
-(8, 'rest-api-srestrepo', false, true, '2026-03-13 16:45:00', 3, 10, 2),
-(9, 'microservices-cjimenez', false, true, '2026-03-15 17:00:00', 4, 6, 3),
-(10, 'standalone-notes-dcastillo', false, false, '2026-03-01 12:00:00', 1, 7, NULL);
+
 
 INSERT INTO commits (id, commit_hash, message, lines_added, lines_deleted, commit_date, repository_id, author_id) VALUES
 (1, 'a1b2c3d', 'Initial commit with starter code', 150, 0, '2026-03-01 08:10:00', 1, 1),

@@ -8,6 +8,7 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
@@ -29,9 +30,12 @@ public class Assignment {
     private Integer maxScore;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "classroom_id")
     private Classroom classroom;
 
     @JsonIgnore
     @OneToMany(mappedBy = "assignment", cascade = CascadeType.ALL)
     private List<Repository> repositories;
+
+
 }
