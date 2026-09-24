@@ -13,5 +13,14 @@ import java.util.List;
 @Entity
 @Table(name = "classrooms")
 public class Classroom {
+    @Id
+    private Integer id;
+
+    private String name;
+
+    private String course_code;
+
+    private String semester;
+
 
 }

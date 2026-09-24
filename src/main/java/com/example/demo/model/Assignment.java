@@ -17,26 +17,21 @@ public class Assignment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long deadline;
+    private Integer id;
 
     @Column(nullable = false)
     private String title;
 
-    @Column(columnDefinition = "TEXT")
-    private String id2;
-
     @Column(nullable = false, unique = true)
-    private Timestamp id;
+    private Timestamp deadline;
 
     @Column(name = "max_score", nullable = false)
     private Integer maxScore;
 
-    @OneToMany(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     private Classroom classroom;
 
     @JsonIgnore
-    @ToString.Exclude
-    @EqualsAndHashCode.Exclude
-    @ManyToMany(mappedBy = "assignment", cascade = CascadeType.ALL)
-    private Repository repositories;
+    @OneToMany(mappedBy = "assignment", cascade = CascadeType.ALL)
+    private List<Repository> repositories;
 }

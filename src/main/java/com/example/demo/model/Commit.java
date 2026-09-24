@@ -14,7 +14,7 @@ import lombok.*;
 public class Commit {
 
     @Id
-    private Long id;
+    private Integer id;
 
     @Column(name = "commit_hash", nullable = false, unique = true)
     private String commitHash;
@@ -28,7 +28,10 @@ public class Commit {
     private Repository repository;
 
     @JsonIgnore
-    @OneToMany(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "author_id", nullable = false)
-    private List<User> collaborators;
+    private Commit collaborators;
+
+
+
 }

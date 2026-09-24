@@ -8,4 +8,8 @@ import lombok.*;
 @Table(name = "repositories")
 public class Repository {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
 }
